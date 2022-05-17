@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 
+from tokenize import group
 from typing import List
 
 
@@ -48,10 +49,38 @@ def factorial(number: int) -> int:
 
 
 def use_continue() -> None:
-    pass
+    for i in range (1,11):
+        if i == 5 : 
+            continue
+        else:
+            print(i)
+    
 
 
 def verify_ages(groups: List[List[int]]) -> List[bool]:
+    acceptance = []
+    for sous_groupe in groups:
+        if len(sous_groupe) > 10 or len(sous_groupe) <= 3:
+            acceptance.append(False)
+        else:
+            for elt in sous_groupe:
+                if elt < 18:
+                    acceptance.append(False)
+                    break
+                else:
+                    tem_70 = False
+                    tem_50 = False
+                    for elt in sous_groupe:
+                        if elt < 70:
+                            tem_70 = True
+                        elif elt == 50:
+                            tem_50 = True
+                    if tem_70 and tem_50:
+                        acceptance.append(False)
+           
+
+
+
     return []
 
 
