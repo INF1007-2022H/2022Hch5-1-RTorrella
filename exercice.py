@@ -25,23 +25,26 @@ def use_prefixes() -> List[str]:
 
 def prime_integer_summation() -> int:
 
-    somme = 2
+    somme = 0
     cpt = 0
-    nbr = 3
+    nbr = 2
 
     while cpt < 100:
-        for i in range (2, nbr // 2):
+        for i in range (2, nbr):
             if nbr % i == 0 :
                 break
-            else:
-                somme += nbr
-        cpt += 1
+        else:
+            somme += nbr
+            cpt += 1
         nbr += 1
     return somme
 
 
 def factorial(number: int) -> int:
-    return 0
+    fct = 1
+    for k in range(1, number + 1):
+        fct = fct * k
+    return fct
 
 
 def use_continue() -> None:
