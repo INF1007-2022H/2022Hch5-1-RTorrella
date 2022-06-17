@@ -59,29 +59,23 @@ def use_continue() -> None:
 
 def verify_ages(groups: List[List[int]]) -> List[bool]:
     acceptance = []
+    
     for sous_groupe in groups:
-        if len(sous_groupe) > 10 or len(sous_groupe) <= 3:
+        critTaille = len(sous_groupe) > 10 or len(sous_groupe) <= 3
+        critÂge = (min(sous_groupe) < 18) or (50 in sous_groupe and max(sous_groupe) > 70)
+
+        if critTaille:
             acceptance.append(False)
-        else:
-            for elt in sous_groupe:
-                if elt < 18:
-                    acceptance.append(False)
-                    break
-                else:
-                    tem_70 = False
-                    tem_50 = False
-                    for elt in sous_groupe:
-                        if elt < 70:
-                            tem_70 = True
-                        elif elt == 50:
-                            tem_50 = True
-                    if tem_70 and tem_50:
-                        acceptance.append(False)
-           
-
-
-
-    return []
+            continue
+        if 25 in sous_groupe:
+            acceptance.append(True)
+            continue
+        if critÂge:
+            acceptance.append(False)
+            continue
+        acceptance.append(True)
+            
+    return acceptance
 
 
 def main() -> None:
